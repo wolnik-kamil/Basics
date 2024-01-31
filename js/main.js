@@ -1,50 +1,58 @@
+const scoreDisplay = document.querySelector('#scoreDispaly');
 
-const result = '';
-const score= {
-    win: 0,
-    draw: 0,
-    loose: 0
-};
-
-
+const score = JSON.parse(localStorage.getItem('score'));
 function playGame(playerMove) {
     const computerMove = pickComputerMove();
+    let result = '';
 
     if (playerMove === 'scissors') {
         if(computerMove === 'rock') {
-            result == 'you lose';
+            result = 'You lose';
         }
         else if(computerMove === 'paper') {
-            result == 'you win';
+            result = 'You win';
         }
         else if(computerMove === 'scissors') {
-            result == 'you draw';
+            result = 'You draw';
         }
     }
     if (playerMove === 'paper') {
         if(computerMove === 'rock') {
-            result == 'you win';
+            result = 'You win';
         }
         else if(computerMove === 'paper') {
-            result == 'you draw';
+            result = 'You draw';
         }
         else if(computerMove === 'scissors') {
-            result == 'you lose';
+            result = 'You lose';
         }
     }
     if (playerMove === 'rock') {
         if(computerMove === 'rock') {
-            result == 'you draw';
+            result = 'You draw';
         }
         else if(computerMove === 'paper') {
-            result == 'you lose';
+            result = 'You lose';
         }
         else if(computerMove === 'scissors') {
-            result == 'you win';
+            result = 'You win';
         }
     }
+    if(result==='You win') {
+        score.win += 1;
+    } else if(result==='You lose') {
+        score.lose += 1;
+    }
+    else if(result==='You draw') {
+        score.draw += 1;
+    }
 
-    alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}`)
+    localStorage.setItem('score', JSON.stringify(score));
+
+    alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}!
+    Wins:${score.win} | Loses:${score.lose} | Draws:${score.draw}`);
+   //scoreDisplay.innerHTML = ``
+    console.log(score);
 }
 
 
