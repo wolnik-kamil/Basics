@@ -1,17 +1,50 @@
-const product = {
-    name: 'socks',
-    price: 1090,
-    
+
+const result = "";
+const score= {
+    win: 0,
+    draw: 0,
+    loose: 0
 };
-console.log(product);
-console.log(product.name);
-console.log(product.price);
 
-product.name = 'cotton socks';
-console.log(product.name);
 
-product.newProperty = true;
-console.log(product);
+function playGame(playerMove) {
+    const computerMove = pickComputerMove();
 
-delete product.newProperty;
-console.log(product);
+    if (playerMove === 'scissors') {
+        if(computerMove === 'rock') {
+            result = 'you lose';
+        }
+        else if(computerMove === 'paper') {
+            result = 'you win';
+        }
+        else if(computerMove === 'scissors') {
+            result = 'you draw';
+        }
+    }
+    if (playerMove === 'paper') {
+        if(computerMove === 'rock') {
+            result = 'you win';
+        }
+        else if(computerMove === 'paper') {
+            result = 'you drawwin';
+        }
+        else if(computerMove === 'scissors') {
+            result = 'you lose';
+        }
+    }
+    if (playerMove === 'rock') {
+        if(computerMove === 'rock') {
+            result = 'you draw';
+        }
+        else if(computerMove === 'lose') {
+            result = 'you win';
+        }
+        else if(computerMove === 'scissors') {
+            result = 'you win';
+        }
+    }
+
+    alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}`)
+}
+
+
