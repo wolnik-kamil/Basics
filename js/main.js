@@ -1,5 +1,5 @@
 
-const result = "";
+const result = '';
 const score= {
     win: 0,
     draw: 0,
@@ -12,35 +12,35 @@ function playGame(playerMove) {
 
     if (playerMove === 'scissors') {
         if(computerMove === 'rock') {
-            result = 'you lose';
+            result == 'you lose';
         }
         else if(computerMove === 'paper') {
-            result = 'you win';
+            result == 'you win';
         }
         else if(computerMove === 'scissors') {
-            result = 'you draw';
+            result == 'you draw';
         }
     }
     if (playerMove === 'paper') {
         if(computerMove === 'rock') {
-            result = 'you win';
+            result == 'you win';
         }
         else if(computerMove === 'paper') {
-            result = 'you drawwin';
+            result == 'you draw';
         }
         else if(computerMove === 'scissors') {
-            result = 'you lose';
+            result == 'you lose';
         }
     }
     if (playerMove === 'rock') {
         if(computerMove === 'rock') {
-            result = 'you draw';
+            result == 'you draw';
         }
-        else if(computerMove === 'lose') {
-            result = 'you win';
+        else if(computerMove === 'paper') {
+            result == 'you lose';
         }
         else if(computerMove === 'scissors') {
-            result = 'you win';
+            result == 'you win';
         }
     }
 
@@ -48,3 +48,19 @@ function playGame(playerMove) {
 }
 
 
+
+function pickComputerMove() {
+    const randomNr = Math.random();
+
+    let computerMove = '';
+
+    if(randomNr >= 0 && randomNr < 1/3) {
+        computerMove = 'rock';
+    } else if(randomNr >= 1/3 && randomNr < 2/3) {
+        computerMove = 'paper';
+    } else if(randomNr >= 2/3 && randomNr < 1) {
+        computerMove = 'scissors';
+    }
+
+    return computerMove;
+}
